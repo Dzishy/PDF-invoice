@@ -8,6 +8,7 @@ class Dates ():
         self.due = "2013-01-01"
 
     def displayDates(self):
+        '''A method to create a dictionary with dates details'''
         dates = {}
         dates['Issue'] = self.issue
         dates['Sale'] = self.sale

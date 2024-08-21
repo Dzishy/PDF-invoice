@@ -7,6 +7,8 @@ class Buyer():
         self.nip = '0000000000'
         
     def dispBuyer (self):
+        '''A method returning a dictionary with buyer's details'''
+        
         buyer = {}
         buyer['Buyer'] = self.name
         buyer['Address'] = self.address
