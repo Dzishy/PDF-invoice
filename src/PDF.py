@@ -1,8 +1,8 @@
 from fpdf import FPDF
 from fpdf.fonts import FontFace
-from Seller import Seller
-from Buyer import Buyer
-from Dates import Dates
+from .Seller import Seller
+from .Buyer import Buyer
+from .Dates import Dates
         
 
 class PDF(FPDF):
@@ -14,7 +14,7 @@ class PDF(FPDF):
         '''A header with logo and invoice number'''
         
         # Adding logo
-        self.image("./logo-01.png",170,20,29)
+        self.image(self.SELLER.logo,170,20,29)
         self.set_font("helvetica", "B", 22)
         # Printing title:
         self.set_y(20)
@@ -78,7 +78,7 @@ class PDF(FPDF):
     def mainTable (self):
         '''A table with sold items or provided services'''
         
-        with self.table(width=190, col_widths=(10, 100, 26, 25, 29), align='L', line_height=5, padding=2, headings_style=FontFace(fill_color=self.BLUE)) as table:
+        with self.table(width=190, col_widths=(10, 100, 20, 30, 30), align='L', line_height=5, padding=2, headings_style=FontFace(fill_color=self.BLUE)) as table:
             for rows in self.SELLER.itemsSold():
                 row = table.row()
                 for item in rows:
@@ -88,7 +88,7 @@ class PDF(FPDF):
         '''A total summary of the invoice'''
         
         summary = self.SELLER.summary()
-        with self.table(width=54, col_widths=(25, 29), align='R', line_height=5, padding=2, first_row_as_headings=False) as table:
+        with self.table(width=60, col_widths=(30, 30), align='R', line_height=5, padding=2, first_row_as_headings=False) as table:
             for i, rows in enumerate(summary):
                 row = table.row()
                 if i == len (summary)-1:
