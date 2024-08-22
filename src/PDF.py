@@ -8,7 +8,13 @@ from .Dates import Dates
 class PDF(FPDF):
     
     BLUE = (180, 230, 250)
-    SELLER = Seller()
+    
+    def __init__ (self, orientation, units, format, DATA):
+        super().__init__(orientation, units, format)
+        
+        self.SELLER = Seller(DATA)
+        self.BUYER = Buyer(DATA)
+        self.DATES = Dates(DATA)
     
     def header(self):
         '''A header with logo and invoice number'''
@@ -26,7 +32,8 @@ class PDF(FPDF):
         self.ln(20)
         
     def footer(self):
-        '''A footer with page number'''           
+        '''A footer with page number'''     
+              
         self.set_y(-15)
         self.cell(0, 10, f"Page {self.page_no()}/{self.pages_count}", align='C')
     
@@ -44,7 +51,6 @@ class PDF(FPDF):
     def sidesInfo(self):
         '''Adding information about the seller, the buyer, payment details and dates'''
         
-        buyer = Buyer()
         # Save the current Y position
         y = self.get_y()
         
@@ -53,7 +59,7 @@ class PDF(FPDF):
         # Dynamically set X position for the buyer table
         self.set_xy(self.get_x() + 95, y)
         # Render buyer info table
-        self.renderTable(buyer.dispBuyer().items())
+        self.renderTable(self.BUYER.dispBuyer().items())
         
         # Calculate y for drawing a division line
         maxY = max(self.get_y(), y + (len(self.SELLER.dispSeller()) * 6))
@@ -67,10 +73,10 @@ class PDF(FPDF):
         self.ln (6)
         
         # Draw tables with payment details and dates
-        dates = Dates()
+        
         self.set_x(10)
         y = self.get_y()
-        self.renderTable(dates.displayDates().items())
+        self.renderTable(self.DATES.displayDates().items())
         self.set_xy(self.get_x() + 95, y)
         self.renderTable(self.SELLER.paymentDetails().items())
         self.ln(10)

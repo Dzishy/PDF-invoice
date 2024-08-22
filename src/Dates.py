@@ -1,10 +1,9 @@
 import json
 
 class Dates ():
-    def __init__(self):
-        with open('./input/input-data.json','r') as jsonData:
-            data = json.load(jsonData)
-        dateData = data.get("dates",{})
+    def __init__(self, DATA):
+        
+        dateData = DATA.get("dates",{})
         self.issue = dateData.get("issue", "")
         self.sale = dateData.get("sale", "")
         self.due = dateData.get("due", "")

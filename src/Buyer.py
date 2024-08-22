@@ -2,10 +2,9 @@ import json
     
 
 class Buyer():
-    def __init__(self):
-        with open('./input/input-data.json','r') as jsonData:
-            data = json.load(jsonData)
-        buyerData = data.get("buyer", {})  # Use .get() to avoid KeyError if "buyer" doesn't exist
+    def __init__(self, DATA):
+        
+        buyerData = DATA.get("buyer", {})  # Use .get() to avoid KeyError if "buyer" doesn't exist
         self.name = buyerData.get("name", "")
         self.address = buyerData.get("address", "")
         self.vatCode = buyerData.get("vatCode", "")

@@ -1,7 +1,12 @@
+import json
 from src.PDF import PDF
 
 def main():
-    invoice = PDF('P','mm','A4')
+    
+    with open('./input/input-data.json','r') as jsonData:
+        DATA = json.load(jsonData)
+    
+    invoice = PDF('P','mm','A4', DATA)
     
     invoice.add_page()
     invoice.set_font("helvetica", "", 10)

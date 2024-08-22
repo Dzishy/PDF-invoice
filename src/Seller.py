@@ -3,14 +3,12 @@ import json
 
 class Seller():
     
-    with open('./input/input-data.json','r') as jsonData:
-        DATA = json.load(jsonData)
-    
-    currency = DATA.get("seller").get("currency")
-    
-    def __init__(self):
-                
+    def __init__(self, DATA):
+        
+        self.DATA = DATA
+              
         sellerData = self.DATA.get("seller", {})  # Use .get() to avoid KeyError if "buyer" doesn't exist
+        
         self.name = sellerData.get("name", "")
         self.address = sellerData.get("address", "")
         self.vatCode = sellerData.get("vatCode", "")
@@ -19,9 +17,10 @@ class Seller():
         self.bank = sellerData.get("bank", "")
         self.swift = sellerData.get("swift", "")
         self.account = sellerData.get("account", "")
-        self.logo = sellerData.get("logo", "") # Enter a path to the image with the logo
-        self.signature = sellerData.get("signature", "") # Enter a path to the image with the signature
-        self.invoiceNumber = sellerData.get("invoiceNumber", "") # Enter the current invoice number  
+        self.logo = sellerData.get("logo", "") 
+        self.signature = sellerData.get("signature", "") 
+        self.invoiceNumber = sellerData.get("invoiceNumber", "") 
+        self.currency = sellerData.get("currency") 
         
     def dispSeller (self):
         '''A method to create a dictionary with seller details'''
@@ -56,7 +55,7 @@ class Seller():
             unitPrice = value.get("unitPrice", "")
             amount = value.get("amount", "")
             # add a tuple with sold item or provided service details to the 'items' list
-            items.append((no, nameOfService, f'{quantity}', f'{unitPrice:,.2f}', f'{amount:,.2f}'))
+            items.append((no, nameOfService, f'{quantity}', f'{self.currency} {unitPrice:,.2f}', f'{self.currency} {amount:,.2f}'))
         
         return items
     
@@ -66,7 +65,7 @@ class Seller():
         subtotal = 0
         items = self.itemsSold()
         for i in range (1,len(items)):
-            amount = items[i][4].replace(",", "")
+            amount = items[i][4].replace(self.currency, "").replace(",", "")
             subtotal += float(amount)
         taxRate = self.DATA.get("seller", {}).get('taxRate', "")
         taxAmount = subtotal * taxRate
