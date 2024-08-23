@@ -11,9 +11,11 @@ class Seller():
         self.bank = 'Best Bank Ever'
         self.swift = 'BBEDRPW'
         self.account = 'XL10 0000 0000 0000 0000 0000 0000'
+        self.taxRate = 0
         self.logo = "./assets/logo-01.png" # Enter a path to the image with the logo
         self.signature = './assets/signature.png' # Enter a path to the image with the signature
-        self.invoiceNumber = 'nr 1/16.08.2024' # Enter the current invoice number      
+        self.invoiceNumber = 'nr 1/16.08.2024' # Enter the current invoice number   
+        self.currency = 'EUR'   
     
     def to_dict(self):
         return self.__dict__
