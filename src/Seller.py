@@ -7,7 +7,7 @@ class Seller():
         
         self.DATA = DATA
               
-        sellerData = self.DATA.get("seller", {})  # Use .get() to avoid KeyError if "buyer" doesn't exist
+        sellerData = self.DATA.get("seller", {}) 
         
         self.name = sellerData.get("name", "")
         self.address = sellerData.get("address", "")

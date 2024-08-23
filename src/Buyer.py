@@ -4,7 +4,7 @@ import json
 class Buyer():
     def __init__(self, DATA):
         
-        buyerData = DATA.get("buyer", {})  # Use .get() to avoid KeyError if "buyer" doesn't exist
+        buyerData = DATA.get("buyer", {})
         self.name = buyerData.get("name", "")
         self.address = buyerData.get("address", "")
         self.vatCode = buyerData.get("vatCode", "")
