@@ -1,0 +1,44 @@
+{
+    "seller": {
+        "name": "MISTER TWISTER",
+        "address": "Calmstreet 1/1, 00-000 Dreamcity",
+        "vatCode": "0000000000",
+        "phone": "+12345678900",
+        "paymentMethod": "Bank Transfer",
+        "bank": "Best Bank Ever",
+        "swift": "BBEDRPW",
+        "account": "XL10 0000 0000 0000 0000 0000 0000",
+        "taxRate": 0,
+        "logo": "./assets/logo-01.png",
+        "signature": "./assets/signature.png",
+        "invoiceNumber": "nr 1/16.08.2024",
+        "currency": "EUR"
+    },
+    "products":{
+        "product1": {
+            "no": "1",
+            "nameOfService": "Computer services",
+            "quantity": 160,
+            "unitPrice": 25,
+            "amount": 4000
+        },
+        "product2": {
+            "no": "2",
+            "nameOfService": "Additional services",
+            "quantity": 10,
+            "unitPrice": 30,
+            "amount": 300
+        }
+
+    },
+    "buyer": {
+        "name": "BEST SOLUTIONS SP. Z O.O.",
+        "address": "Long Street 1, 00-000 Funcity",
+        "vatCode": "0000000000"
+    },
+    "dates": {
+        "issue": "2024-08-21",
+        "sale": "2012-12-12",
+        "due": "2013-01-01"
+    }
+}

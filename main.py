@@ -1,18 +1,30 @@
-from PDF import PDF
+import json
+from src.PDF import PDF
 
 def main():
-    invoice = PDF('P','mm','A4')
+    
+    with open('./input/input-data.json','r') as jsonData:
+        DATA = json.load(jsonData)
+    
+    invoice = PDF('P','mm','A4', DATA)
+    
     invoice.add_page()
+    invoice.set_font("helvetica", "", 10)
+    
     # Adding information about seller and buyer
     invoice.sidesInfo()
+    
     # Adding information about items sold
     invoice.mainTable()
-    invoice.ln(5)
+    invoice.ln(2.5)
+    
     # Adding price summary 
     invoice.summary()
     invoice.ln(10)
+    
     # Places for signatures
     invoice.signatures()
     # Generate invoice in pdf format
-    invoice.output("PDF-invoice/invoice.pdf")
+    invoice.output("./output/invoice.pdf")
+    
 main()
