@@ -12,19 +12,19 @@
         "logo": "./assets/logo-01.png",
         "signature": "./assets/signature.png",
         "invoiceNumber": "nr 1/16.08.2024",
-        "currency": "EUR"
+        "currency": "€"
     },
     "products":{
         "product1": {
             "no": "1",
-            "nameOfService": "Computer services",
+            "nameOfService": "Usługi komputerowe",
             "quantity": 160,
             "unitPrice": 25,
             "amount": 4000
         },
         "product2": {
             "no": "2",
-            "nameOfService": "Additional services",
+            "nameOfService": "Usługi dodatkowe",
             "quantity": 10,
             "unitPrice": 30,
             "amount": 300

@@ -5,29 +5,32 @@ from .Buyer import Buyer
 from .Dates import Dates
         
 
-class PDF(FPDF):
+class PdfBuilder(FPDF):
     
     BLUE = (180, 230, 250)
-    
+
     def __init__ (self, orientation, units, format, DATA):
         super().__init__(orientation, units, format)
         
         self.SELLER = Seller(DATA)
         self.BUYER = Buyer(DATA)
         self.DATES = Dates(DATA)
+        
+        self.add_font('DejaVu', '', 'assets/DejaVuSans.ttf', uni=True)
+        self.add_font('DejaVu', 'B', 'assets/DejaVuSans-Bold.ttf', uni=True)
     
     def header(self):
         '''A header with logo and invoice number'''
         
         # Adding logo
         self.image(self.SELLER.logo,170,20,29)
-        self.set_font("helvetica", "B", 22)
+        self.set_font("DejaVu", "B", 22)
         # Printing title:
         self.set_y(20)
         self.cell(10, 6, "INVOICE", 0, new_x="LMARGIN", new_y="NEXT", align="L")
         self.ln(5)
         # Adding the invoice number
-        self.set_font("helvetica", "", 13)
+        self.set_font("DejaVu", "", 13)
         self.cell(10, None, f'{self.SELLER.invoiceNumber}', 0, new_x="LMARGIN", new_y="NEXT", align="L")
         self.ln(20)
         
@@ -98,7 +101,7 @@ class PDF(FPDF):
             for i, rows in enumerate(summary):
                 row = table.row()
                 if i == len (summary)-1:
-                    self.set_font("helvetica", "B", 10)
+                    self.set_font("DejaVu", "B", 10)
                     self.set_fill_color(self.BLUE) 
                 for item in rows:
                     row.cell(item)
@@ -108,7 +111,7 @@ class PDF(FPDF):
     def signatures (self):
         '''Creating space for signatures and adding an image with the seller's signature'''
         
-        self.set_font('helvetica','', 8)
+        self.set_font('DejaVu','', 8)
         # Create the first cell for buyer's signature
         self.cell(90, 30, "", 1, new_x="RIGHT", new_y="TOP", align="C")
         self.set_x(110)

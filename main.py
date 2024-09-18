@@ -1,15 +1,16 @@
 import json
-from src.PDF import PDF
+from src.PDFBuilder import PdfBuilder
 
 def main():
     
-    with open('./input/input-data.json','r') as jsonData:
+    with open('./input/input-data.json','r', encoding='utf-8') as jsonData:
         DATA = json.load(jsonData)
     
-    invoice = PDF('P','mm','A4', DATA)
+    invoice = PdfBuilder('P','mm','A4', DATA)
     
     invoice.add_page()
-    invoice.set_font("helvetica", "", 10)
+
+    invoice.set_font("DejaVu", "", 10)
     
     # Adding information about seller and buyer
     invoice.sidesInfo()
