@@ -1,7 +1,7 @@
 # A Python invoice generator.
 [Sample invoice](https://github.com/Dzishy/PDF-invoice/blob/main/output/invoice.pdf)
 
-The program generates invoices in widely used PDF format and utilizes a .json file as a data sourse. It supports special characters like Euro symbol or diacritical marks.
+The program generates invoices in widely used PDF format and utilizes a .json file as a data sourse. It supports Unicode characters, including special symbols like the Euro (€) sign and diacritical marks, ensuring compatibility with international languages.
 
 This invoice generating program was written in Python 3.12.4 using FPDF2 library.
 
