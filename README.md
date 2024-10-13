@@ -1,7 +1,7 @@
 # A Python invoice generator.
 [Sample invoice](https://github.com/Dzishy/PDF-invoice/blob/main/output/invoice.pdf)
 
-The program generates invoices in widely used PDF format and utilizes a .json file as a data sourse.
+The program generates invoices in widely used PDF format and utilizes a .json file as a data sourse. It supports Unicode characters, including special symbols like the Euro (€) sign and diacritical marks, ensuring compatibility with international languages.
 
 This invoice generating program was written in Python 3.12.4 using FPDF2 library.
 
@@ -24,19 +24,19 @@ This invoice generating program was written in Python 3.12.4 using FPDF2 library
           "logo": "./assets/logo-01.png",
           "signature": "./assets/signature.png",
           "invoiceNumber": "nr 1/16.08.2024",
-          "currency": "EUR"
+          "currency": "€"
     - provide product information, such as number on a list, name of service, quantity, unit price and the total amount
     - ```"products":{
           "product1": {
               "no": "1",
-              "nameOfService": "Computer services",
+              "nameOfService": "Usługi komputerowe",
               "quantity": 160,
               "unitPrice": 25,
               "amount": 4000
           },
           "product2": {
               "no": "2",
-              "nameOfService": "Additional services",
+              "nameOfService": "Usługi dodatkowe",
               "quantity": 10,
               "unitPrice": 30,
               "amount": 300
