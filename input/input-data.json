@@ -11,7 +11,7 @@
         "taxRate": 0,
         "logo": "./assets/logo-01.png",
         "signature": "./assets/signature.png",
-        "invoiceNumber": "nr 1/16.08.2024",
+        "invoiceNumber": "nr 1/21.08.2024",
         "currency": "€"
     },
     "products":{

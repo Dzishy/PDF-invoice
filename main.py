@@ -25,7 +25,9 @@ def main():
     
     # Places for signatures
     invoice.signatures()
-    # Generate invoice in pdf format
-    invoice.output("./output/invoice.pdf")
     
+    # Generate invoice in pdf format
+    ar = DATA['seller']['invoiceNumber'].replace(" ", "").split('/')
+    invoice.output(f"./output/{ar[0]}-{ar[1]}.pdf")
+ 
 main()
